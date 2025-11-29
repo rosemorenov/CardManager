@@ -21,49 +21,50 @@
     <div class="mb-3">
         <label asp-for="Card.Name"></label>
         <!-- Text input bound to Card.Name -->
-        <input asp-for="Card.Name" class="form-control" diasbled />
+        <input asp-for="Card.Name" class="form-control" disabled />
     </div>
 
     <!-- Card Set -->
     <div class="mb-3">
         <label asp-for="Card.CardSet"></label>
-        <input asp-for="Card.CardSet" class="form-control" diasbled />
+        <input asp-for="Card.CardSet" class="form-control" disabled />
     </div>
 
     <!-- Rarity -->
     <div class="mb-3">
         <label asp-for="Card.Rarity"></label>
-        <input asp-for="Card.Rarity" class="form-control" diasbled />
+        <input asp-for="Card.Rarity" class="form-control" disabled />
     </div>
 
     <!-- Mana Cost -->
     <div class="mb-3">
         <label asp-for="Card.ManaCost"></label>
-        <input asp-for="Card.ManaCost" class="form-control" diasbled />
+        <input asp-for="Card.ManaCost" class="form-control" disabled />
     </div>
 
     <!-- Card Type -->
     <div class="mb-3">
         <label asp-for="Card.CardType"></label>
-        <input asp-for="Card.CardType" class="form-control" diasbled />
+        <input asp-for="Card.CardType" class="form-control" disabled />
     </div>
 
     <!-- Subtype -->
     <div class="mb-3">
         <label asp-for="Card.SubType"></label>
-        <input asp-for="Card.SubType" class="form-control" diasbled />
+        <input asp-for="Card.SubType" class="form-control" disabled />
     </div>
 
     <!-- Power -->
     <div class="mb-3">
         <label asp-for="Card.Power"></label>
-        <input asp-for="Card.Power" class="form-control" diasbled />
+        <input asp-for="Card.Power" class="form-control" disabled />
     </div>
 
     <!-- Value -->
     <div class="mb-3">
-        <label asp-for="Card.Value"></label>
+        <label asp-for="Card.Value" class="form-label">Card Price ($)</label>
         <input asp-for="Card.Value" class="form-control" />
+        <span asp-validation-for="Card.Value" class="text-danger"></span>
     </div>
 
     <!-- Quantity -->
@@ -77,7 +78,7 @@
     <div class="mb-3">
         <label asp-for="Card.ImageFileName"></label>
         <!-- User enters the name of the card image stored in wwwroot/images -->
-        <input asp-for="Card.ImageFileName" class="form-control" diasbled />
+        <input asp-for="Card.ImageFileName" class="form-control" disabled />
     </div>
 
     <!-- Submit (Save) Button -->

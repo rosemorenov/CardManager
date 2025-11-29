@@ -118,3 +118,14 @@ table.table td {
 .navbar-dark .navbar-nav .nav-link:hover {
     color: #fff !important;
 }
+
+/* Custom styling for disabled inputs */
+input.form-control:disabled,
+input[disabled],
+.form-control:disabled {
+    background-color: #222 !important;   
+    color: #999999 !important;               
+    border: 1px solid #555 !important;    
+
+    opacity: 1 !important;             
+}
