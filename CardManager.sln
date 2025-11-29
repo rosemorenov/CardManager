@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardManager", "CardManager\CardManager.csproj", "{9B8DD1BD-4451-A07F-7465-446B5D98F509}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B8DD1BD-4451-A07F-7465-446B5D98F509}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B8DD1BD-4451-A07F-7465-446B5D98F509}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B8DD1BD-4451-A07F-7465-446B5D98F509}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B8DD1BD-4451-A07F-7465-446B5D98F509}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {73C1520B-B751-4191-A99F-AA5692298AEA}
+	EndGlobalSection
+EndGlobal

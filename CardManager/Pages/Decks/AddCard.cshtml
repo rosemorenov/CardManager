@@ -1,0 +1,25 @@
+@page
+@model CardManager.Pages.Decks.AddCardModel
+
+@{
+    ViewData["Title"] = "Add Card to Deck";
+}
+
+<h1>Add Card to Deck: @Model.Deck.DeckName</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="DeckId" />
+    <div class="mb-3">
+        <label for="SelectedCardId">Card</label>
+        <select asp-for="SelectedCardId" class="form-control">
+            <option value="">-- Select a card --</option>
+@foreach (var card in Model.AllCards)
+{
+            <option value="@card.CardId">@card.Name (@card.CardSet)</option>
+}
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+    <a asp-page="./Details" asp-route-id="@Model.Deck.DeckId" class="btn btn-secondary">Back</a>
+</form>

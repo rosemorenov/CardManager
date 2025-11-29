@@ -1,0 +1,35 @@
+@page
+@model CardManager.Pages.Decks.IndexModel
+
+@{
+    ViewData["Title"] = "Decks";
+}
+
+<h1>Decks</h1>
+
+<p>
+    <a asp-page="./Create" class="btn btn-success">Create New Deck</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Deck Name</th>
+            <th>Number of Cards</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var deck in Model.Decks)
+{
+        <tr>
+            <td>@deck.DeckName</td>
+            <td>@(deck.DeckCards?.Count ?? 0)</td>
+            <td>
+                <a asp-page="./Details" asp-route-id="@deck.DeckId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@deck.DeckId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

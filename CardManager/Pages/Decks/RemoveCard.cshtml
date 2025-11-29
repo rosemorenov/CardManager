@@ -1,0 +1,21 @@
+@page
+@model CardManager.Pages.Decks.RemoveCardModel
+
+@{
+    ViewData["Title"] = "Remove Card from Deck";
+}
+
+<h1>Remove Card from Deck</h1>
+
+<h3>Are you sure you want to remove this card from the deck?</h3>
+
+<div>
+    <p><strong>Deck:</strong> @Model.DeckCard.Deck.DeckName</p>
+    <p><strong>Card:</strong> @Model.DeckCard.Card.Name (@Model.DeckCard.Card.CardSet)</p>
+</div>
+
+<form method="post">
+    <input type="hidden" asp-for="DeckCard.DeckCardId" />
+    <button type="submit" class="btn btn-danger">Remove</button>
+    <a asp-page="./Details" asp-route-id="@Model.DeckCard.DeckId" class="btn btn-secondary">Cancel</a>
+</form>

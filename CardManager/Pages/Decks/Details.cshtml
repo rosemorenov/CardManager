@@ -1,0 +1,46 @@
+@page
+@model CardManager.Pages.Decks.DetailsModel
+
+@{
+    ViewData["Title"] = "Deck Details";
+}
+
+<h1>Deck: @Model.Deck.DeckName</h1>
+
+<p>
+    <strong>Total Cards:</strong> @Model.DeckCards.Count<br />
+    <strong>Estimated Value:</strong> @Model.TotalValue.ToString("C")
+</p>
+
+<p>
+    <a asp-page="./AddCard" asp-route-id="@Model.Deck.DeckId" class="btn btn-primary">Add Card to Deck</a>
+    <a asp-page="./Index" class="btn btn-secondary">Back to Decks</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Card Name</th>
+            <th>Set</th>
+            <th>Rarity</th>
+            <th>Power</th>
+            <th>Value</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var dc in Model.DeckCards)
+{
+        <tr>
+            <td>@dc.Card.Name</td>
+            <td>@dc.Card.CardSet</td>
+            <td>@dc.Card.Rarity</td>
+            <td>@dc.Card.Power</td>
+            <td>@dc.Card.Value</td>
+            <td>
+                <a asp-page="./RemoveCard" asp-route-id="@dc.DeckCardId">Remove</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

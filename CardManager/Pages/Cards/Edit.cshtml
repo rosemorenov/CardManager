@@ -1,0 +1,55 @@
+@page
+@model CardManager.Pages.Cards.EditModel
+
+@{
+    ViewData["Title"] = "Edit Card";
+}
+
+<h1>Edit Card</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Card.CardId" />
+    <div class="mb-3">
+        <label asp-for="Card.Name"></label>
+      
+    </div>
+    <div class="mb-3">
+        <label asp-for="Card.CardSet"></label>
+     
+    </div>
+    <div class="mb-3">
+        <label asp-for="Card.Rarity"></label>
+      
+    </div>
+    <div class="mb-3">
+        <label asp-for="Card.ManaCost"></label>
+  
+    </div>
+    <div class="mb-3">
+        <label asp-for="Card.CardType"></label>
+     
+    </div>
+    <div class="mb-3">
+        <label asp-for="Card.SubType"></label>
+  
+    </div>
+    <div class="mb-3">
+        <label asp-for="Card.Power"></label>
+
+    </div>
+    <div class="mb-3">
+        <label asp-for="Card.Value"></label>
+        
+    </div>
+    <div class="mb-3">
+        <label asp-for="Card.Quantity"></label>
+        <input asp-for="Card.Quantity" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Card.ImageFileName"></label>
+     
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-page="./Index" class="btn btn-secondary">Back to list</a>
+</form>

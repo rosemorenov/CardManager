@@ -1,0 +1,54 @@
+@page
+@model CardManager.Pages.Cards.CreateModel
+
+@{
+    ViewData["Title"] = "Create Card";
+}
+
+<h1>Create Card</h1>
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="Card.Name"></label>
+        <input asp-for="Card.Name" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Card.CardSet"></label>
+        <input asp-for="Card.CardSet" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Card.Rarity"></label>
+        <input asp-for="Card.Rarity" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Card.ManaCost"></label>
+        <input asp-for="Card.ManaCost" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Card.CardType"></label>
+        <input asp-for="Card.CardType" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Card.SubType"></label>
+        <input asp-for="Card.SubType" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Card.Power"></label>
+        <input asp-for="Card.Power" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Card.Value"></label>
+        <input asp-for="Card.Value" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Card.Quantity"></label>
+        <input asp-for="Card.Quantity" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Card.ImageFileName"></label>
+        <input asp-for="Card.ImageFileName" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-page="./Index" class="btn btn-secondary">Back to list</a>
+</form>

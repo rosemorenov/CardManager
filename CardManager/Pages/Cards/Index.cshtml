@@ -1,0 +1,58 @@
+@page
+@model CardManager.Pages.Cards.IndexModel
+
+@{
+    ViewData["Title"] = "Cards";
+}
+
+<h1>Cards</h1>
+
+<form method="get" class="mb-3">
+    <input type="text" name="search" value="@Model.SearchTerm" placeholder="Search cards..." />
+    <button type="submit" class="btn btn-primary">Search</button>
+    <a asp-page="./Index" class="btn btn-secondary">Clear</a>
+</form>
+
+<p>
+    <a asp-page="./Create" class="btn btn-success">Add New Card</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Set</th>
+            <th>Rarity</th>
+            <th>Mana</th>
+            <th>Type</th>
+            <th>SubType</th>
+            <th>Power</th>
+            <th>Value</th>
+            <th>Quantity</th>
+            <th>Image</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var card in Model.Cards)
+{
+        <tr>
+            <td>@card.Name</td>
+            <td>@card.CardSet</td>
+            <td>@card.Rarity</td>
+            <td>@card.ManaCost</td>
+            <td>@card.CardType</td>
+            <td>@card.SubType</td>
+            <td>@card.Power</td>
+            <td>$@card.Value</td>
+            <td>@card.Quantity</td>
+            <td><img src="~/images/@card.ImageFileName" class="img-thumbnail" /></td>
+            <td>
+                <p><a asp-page="./Details" asp-route-id="@card.CardId">Details</a></p>
+                <p><a asp-page="./Edit" asp-route-id="@card.CardId">Edit</a></p>
+                <p><a asp-page="./Delete" asp-route-id="@card.CardId">Delete</a></p>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

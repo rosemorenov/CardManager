@@ -1,0 +1,57 @@
+@page
+@model CardManager.Pages.Cards.DetailsModel
+
+<div class="container mt-4">
+
+    <div class="row mb-4">
+        <div class="col">
+            <h2 class="text-primary">Card Details</h2>
+            <hr />
+        </div>
+    </div>
+
+    <div class="row">
+
+        <!-- Left Column: Card Image -->
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <img src="~/images/@Model.Card.ImageFileName" 
+                     class="card-img-top img-fluid" 
+                     alt="@Model.Card.Name" />
+            </div>
+        </div>
+
+        <!-- Right Column: Card Info -->
+        <div class="col-md-8">
+            <div class="card shadow-sm p-3">
+                <h3 class="card-title">@Model.Card.Name</h3>
+
+                <div class="row mt-3">
+                    <div class="col-sm-6">
+                        <p><strong>Set:</strong> @Model.Card.CardSet</p>
+                        <p><strong>Type:</strong> @Model.Card.CardType</p>
+                        <p><strong>SubType:</strong> @Model.Card.SubType</p>
+                        <p><strong>Power:</strong> @Model.Card.Power</p>
+                        <p><strong>Rarity:</strong> @Model.Card.Rarity</p>
+                        <p><strong>Mana Cost:</strong> @Model.Card.ManaCost</p>
+                    </div>
+                </div>
+
+                <hr />
+
+            </div>
+        </div>
+
+    </div>
+
+   
+
+    <!-- Action Buttons -->
+    <div class="row mt-4">
+        <div class="col">
+            <a asp-page="./Edit" asp-route-id="@Model.Card.CardId" class="btn btn-warning">Edit Card</a>
+            <a asp-page="./Index" class="btn btn-secondary ms-2">Back to List</a>
+        </div>
+    </div>
+
+</div>
