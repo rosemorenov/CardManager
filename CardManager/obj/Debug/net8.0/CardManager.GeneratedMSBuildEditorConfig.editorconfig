@@ -18,10 +18,6 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /workspaces/CardManager/CardManager
 build_property._RazorSourceGeneratorDebug = 
 
-[/workspaces/CardManager/CardManager/Pages/CardManager.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2FyZE1hbmFnZXIuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [/workspaces/CardManager/CardManager/Pages/Cards/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2FyZHMvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -72,10 +68,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/workspaces/CardManager/CardManager/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[/workspaces/CardManager/CardManager/Pages/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/workspaces/CardManager/CardManager/Pages/Shared/_ValidationScriptsPartial.cshtml]

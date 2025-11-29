@@ -2,20 +2,37 @@
 @model CardManager.Pages.Decks.RemoveCardModel
 
 @{
+    // Set the page title used in the browser window
     ViewData["Title"] = "Remove Card from Deck";
 }
 
 <h1>Remove Card from Deck</h1>
 
+<!-- User confirmation message -->
 <h3>Are you sure you want to remove this card from the deck?</h3>
 
 <div>
+    <!-- Display the deck name for context -->
     <p><strong>Deck:</strong> @Model.DeckCard.Deck.DeckName</p>
+
+    <!-- Display the card being removed -->
     <p><strong>Card:</strong> @Model.DeckCard.Card.Name (@Model.DeckCard.Card.CardSet)</p>
 </div>
 
+<!-- Form posts back to the OnPostAsync() method in RemoveCardModel -->
 <form method="post">
+
+    <!-- Hidden field passes the DeckCardId to the POST handler
+         This tells the backend exactly which DeckCard relationship to delete -->
     <input type="hidden" asp-for="DeckCard.DeckCardId" />
+
+    <!-- Confirm delete -->
     <button type="submit" class="btn btn-danger">Remove</button>
-    <a asp-page="./Details" asp-route-id="@Model.DeckCard.DeckId" class="btn btn-secondary">Cancel</a>
+
+    <!-- Cancel and return to deck details without removing anything -->
+    <a asp-page="./Details" 
+       asp-route-id="@Model.DeckCard.DeckId" 
+       class="btn btn-secondary">
+        Cancel
+    </a>
 </form>

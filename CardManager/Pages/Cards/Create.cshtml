@@ -2,53 +2,87 @@
 @model CardManager.Pages.Cards.CreateModel
 
 @{
+    // Sets the page title displayed in the browser and layout page.
     ViewData["Title"] = "Create Card";
 }
 
 <h1>Create Card</h1>
 
+<!-- 
+    The main form used to submit a new card to the database.
+    Uses POST so that data is securely sent to the server for processing.
+-->
 <form method="post">
+
+    <!-- Card Name -->
     <div class="mb-3">
+        <!-- asp-for auto-binds the label to the Card.Name property -->
         <label asp-for="Card.Name"></label>
+
+        <!-- 
+            asp-for tells Razor to generate an input field that binds to Card.Name.
+            Model validation errors will automatically appear near this field.
+        -->
         <input asp-for="Card.Name" class="form-control" />
     </div>
+
+    <!-- Card Set -->
     <div class="mb-3">
         <label asp-for="Card.CardSet"></label>
         <input asp-for="Card.CardSet" class="form-control" />
     </div>
+
+    <!-- Rarity -->
     <div class="mb-3">
         <label asp-for="Card.Rarity"></label>
         <input asp-for="Card.Rarity" class="form-control" />
     </div>
+
+    <!-- Mana Cost -->
     <div class="mb-3">
         <label asp-for="Card.ManaCost"></label>
         <input asp-for="Card.ManaCost" class="form-control" />
     </div>
+
+    <!-- Card Type -->
     <div class="mb-3">
         <label asp-for="Card.CardType"></label>
         <input asp-for="Card.CardType" class="form-control" />
     </div>
+
+    <!-- SubType -->
     <div class="mb-3">
         <label asp-for="Card.SubType"></label>
         <input asp-for="Card.SubType" class="form-control" />
     </div>
+
+    <!-- Power (Nullable Integer) -->
     <div class="mb-3">
         <label asp-for="Card.Power"></label>
         <input asp-for="Card.Power" class="form-control" />
     </div>
+
+    <!-- Value (Nullable Decimal) -->
     <div class="mb-3">
         <label asp-for="Card.Value"></label>
         <input asp-for="Card.Value" class="form-control" />
     </div>
+
+    <!-- Quantity Owned -->
     <div class="mb-3">
         <label asp-for="Card.Quantity"></label>
         <input asp-for="Card.Quantity" class="form-control" />
     </div>
+
+    <!-- Image file name (must match file stored in wwwroot/images/) -->
     <div class="mb-3">
         <label asp-for="Card.ImageFileName"></label>
         <input asp-for="Card.ImageFileName" class="form-control" />
     </div>
 
+    <!-- Submit Button: sends form to CreateModel.OnPostAsync() -->
     <button type="submit" class="btn btn-primary">Create</button>
+
+    <!-- Cancel button returns the user to the list of cards -->
     <a asp-page="./Index" class="btn btn-secondary">Back to list</a>
 </form>

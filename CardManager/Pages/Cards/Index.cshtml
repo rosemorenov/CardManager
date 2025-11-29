@@ -2,21 +2,43 @@
 @model CardManager.Pages.Cards.IndexModel
 
 @{
+    // Set the page title that appears in the browser and layout header
     ViewData["Title"] = "Cards";
 }
 
 <h1>Cards</h1>
 
+<!-- ============================
+     SEARCH BAR
+     Users can search cards by name, set, or any matching field.
+     Submits a GET request so the URL reflects the search query.
+================================= -->
 <form method="get" class="mb-3">
-    <input type="text" name="search" value="@Model.SearchTerm" placeholder="Search cards..." />
+    <input type="text"
+           name="search"
+           value="@Model.SearchTerm"
+           placeholder="Search cards..."
+           class="form-control d-inline-block w-auto" />
+
     <button type="submit" class="btn btn-primary">Search</button>
+
+    <!-- Button resets search and reloads full card list -->
     <a asp-page="./Index" class="btn btn-secondary">Clear</a>
 </form>
 
+<!-- ============================
+     ADD NEW CARD BUTTON
+     Navigates to the create page for adding a new card
+================================= -->
 <p>
     <a asp-page="./Create" class="btn btn-success">Add New Card</a>
 </p>
 
+<!-- ============================
+     CARD LIST TABLE
+     Displays all cards pulled from the database
+     Applies Bootstrap styling for readability
+================================= -->
 <table class="table table-striped">
     <thead>
         <tr>
@@ -30,12 +52,18 @@
             <th>Value</th>
             <th>Quantity</th>
             <th>Image</th>
-            <th></th>
+            <th></th> <!-- Empty header for action links -->
         </tr>
     </thead>
+
     <tbody>
+
 @foreach (var card in Model.Cards)
 {
+        <!-- ============================
+             CARD ROW
+             Each row displays information for one card
+        ================================= -->
         <tr>
             <td>@card.Name</td>
             <td>@card.CardSet</td>
@@ -46,7 +74,19 @@
             <td>@card.Power</td>
             <td>$@card.Value</td>
             <td>@card.Quantity</td>
-            <td><img src="~/images/@card.ImageFileName" class="img-thumbnail" /></td>
+
+            <!-- Show card image from wwwroot/images -->
+            <td>
+                <img src="~/images/@card.ImageFileName"
+                     class="img-thumbnail"
+                     style="max-width: 80px"
+                     alt="@card.Name" />
+            </td>
+
+            <!-- ============================
+                 ACTION LINKS
+                 Navigate to Details, Edit, and Delete pages
+            ================================= -->
             <td>
                 <p><a asp-page="./Details" asp-route-id="@card.CardId">Details</a></p>
                 <p><a asp-page="./Edit" asp-route-id="@card.CardId">Edit</a></p>

@@ -10,31 +10,47 @@ namespace CardManager.Pages.Decks
     {
         private readonly CardCollectionContext _context;
 
+        // Constructor - receives the database context via dependency injection
         public AddCardModel(CardCollectionContext context)
         {
             _context = context;
         }
 
-        public Deck Deck { get; set; } = default!;
-        public List<Card> AllCards { get; set; } = new();
+        // Properties Used for Page State
 
-        [BindProperty]
+        // DeckId is bound from the query string (?deckId=1)
+        // SupportsGet=true allows Razor to bind this value for GET requests
+        [BindProperty(SupportsGet = true)]
         public int DeckId { get; set; }
 
+        // Stores the selected card when the user submits the form
         [BindProperty]
         public int SelectedCardId { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int id)
+        // Holds the deck being modified
+        public Deck? Deck { get; set; }
+
+        // List of all cards used to populate the dropdown
+        public List<Card> AllCards { get; set; } = new();
+
+        // Holds the selected card details for previewing on the page
+        public Card? CardPreview { get; set; }
+
+        // GET: Load Deck and Card List
+        public async Task<IActionResult> OnGetAsync()
         {
-            var deck = await _context.Decks.FindAsync(id);
-            if (deck == null)
-            {
-                return NotFound();
-            }
+            // Ensure a valid DeckId is supplied
+            if (DeckId <= 0)
+                return NotFound("Missing deckId");
 
-            Deck = deck;
-            DeckId = deck.DeckId;
+            // Load the deck from the database
+            Deck = await _context.Decks.FirstOrDefaultAsync(d => d.DeckId == DeckId);
 
+            // If no deck exists with this ID, return 404
+            if (Deck == null)
+                return NotFound("Deck not found");
+
+            // Load all available cards for the dropdown
             AllCards = await _context.Cards
                 .OrderBy(c => c.Name)
                 .ToListAsync();
@@ -42,29 +58,42 @@ namespace CardManager.Pages.Decks
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+
+        // POST: ShowDetails - Display selected card info
+        // Triggered when user clicks the "Show Details" button
+        public async Task<IActionResult> OnPostShowDetailsAsync()
         {
-            var deck = await _context.Decks.FindAsync(DeckId);
-            if (deck == null)
+            // Reload dropdown list and deck data
+            await OnGetAsync();
+
+            // Retrieve selected card information for preview
+            CardPreview = await _context.Cards
+                .FirstOrDefaultAsync(c => c.CardId == SelectedCardId);
+
+            return Page();
+        }
+
+        // POST: AddCard - Add the selected card to the deck
+        // Triggered when user clicks "Add Card to Deck"
+
+        public async Task<IActionResult> OnPostAddCardAsync()
+        {
+            // Validate inputs
+            if (DeckId <= 0 || SelectedCardId <= 0)
+                return RedirectToPage("./Index");
+
+            // Create new DeckCard (join table entry)
+            var deckCard = new DeckCard
             {
-                return NotFound();
-            }
+                DeckId = DeckId,
+                CardId = SelectedCardId
+            };
 
-            // Simple check if card already in deck
-            var existing = await _context.DeckCards
-                .FirstOrDefaultAsync(dc => dc.DeckId == DeckId && dc.CardId == SelectedCardId);
+            // Save the new relationship to the database
+            _context.DeckCards.Add(deckCard);
+            await _context.SaveChangesAsync();
 
-            if (existing == null)
-            {
-                var deckCard = new DeckCard
-                {
-                    DeckId = DeckId,
-                    CardId = SelectedCardId
-                };
-                _context.DeckCards.Add(deckCard);
-                await _context.SaveChangesAsync();
-            }
-
+            // Redirect back to the deck details page
             return RedirectToPage("./Details", new { id = DeckId });
         }
     }

@@ -2,54 +2,87 @@
 @model CardManager.Pages.Cards.EditModel
 
 @{
+    // Sets the browser tab title
     ViewData["Title"] = "Edit Card";
 }
 
 <h1>Edit Card</h1>
 
+<!-- 
+    Form for editing an existing Card.
+    Uses POST method to send updated values to the EditModel.cs OnPostAsync() method.
+-->
 <form method="post">
+
+    <!-- Hidden field to retain the CardId during form submission -->
     <input type="hidden" asp-for="Card.CardId" />
+
+    <!-- Card Name -->
     <div class="mb-3">
         <label asp-for="Card.Name"></label>
-      
+        <!-- Text input bound to Card.Name -->
+        <input asp-for="Card.Name" class="form-control" diasbled />
     </div>
+
+    <!-- Card Set -->
     <div class="mb-3">
         <label asp-for="Card.CardSet"></label>
-     
+        <input asp-for="Card.CardSet" class="form-control" diasbled />
     </div>
+
+    <!-- Rarity -->
     <div class="mb-3">
         <label asp-for="Card.Rarity"></label>
-      
+        <input asp-for="Card.Rarity" class="form-control" diasbled />
     </div>
+
+    <!-- Mana Cost -->
     <div class="mb-3">
         <label asp-for="Card.ManaCost"></label>
-  
+        <input asp-for="Card.ManaCost" class="form-control" diasbled />
     </div>
+
+    <!-- Card Type -->
     <div class="mb-3">
         <label asp-for="Card.CardType"></label>
-     
+        <input asp-for="Card.CardType" class="form-control" diasbled />
     </div>
+
+    <!-- Subtype -->
     <div class="mb-3">
         <label asp-for="Card.SubType"></label>
-  
+        <input asp-for="Card.SubType" class="form-control" diasbled />
     </div>
+
+    <!-- Power -->
     <div class="mb-3">
         <label asp-for="Card.Power"></label>
-
+        <input asp-for="Card.Power" class="form-control" diasbled />
     </div>
+
+    <!-- Value -->
     <div class="mb-3">
         <label asp-for="Card.Value"></label>
-        
-    </div>
-    <div class="mb-3">
-        <label asp-for="Card.Quantity"></label>
-        <input asp-for="Card.Quantity" class="form-control" />
-    </div>
-    <div class="mb-3">
-        <label asp-for="Card.ImageFileName"></label>
-     
+        <input asp-for="Card.Value" class="form-control" />
     </div>
 
+    <!-- Quantity -->
+    <div class="mb-3">
+        <label asp-for="Card.Quantity"></label>
+        <!-- Input for how many copies of the card the user owns -->
+        <input asp-for="Card.Quantity" class="form-control" />
+    </div>
+
+    <!-- Image File Name -->
+    <div class="mb-3">
+        <label asp-for="Card.ImageFileName"></label>
+        <!-- User enters the name of the card image stored in wwwroot/images -->
+        <input asp-for="Card.ImageFileName" class="form-control" diasbled />
+    </div>
+
+    <!-- Submit (Save) Button -->
     <button type="submit" class="btn btn-primary">Save</button>
+
+    <!-- Navigation link back to the card index list -->
     <a asp-page="./Index" class="btn btn-secondary">Back to list</a>
 </form>

@@ -19,4 +19,102 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.card {
+    background-color: #111 !important;
+    color: #fff !important;
+    border: 1px solid #333;
+}
+
+table, th, td {
+  background-color: #111;
+  color: #ffffff;
+}
+
+.form-control::placeholder {
+    color: #ccc;
+}
+
+.btn {
+    border-radius: 6px;
+    font-weight: 500;
+    border: none;
+}
+
+a {
+    color: #4da3ff;
+}
+a:hover {
+    color: #81c4ff;
+}
+
+table.table {
+    background-color: #111;
+    color: #fff;
+}
+table.table th,
+table.table td {
+    color: #fff;
+    background-color: #111;
+    border-color: #333;
+}
+
+.form-control,
+.form-select {
+    background-color: #222;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+.form-control::placeholder {
+    color: #aaa;
+}
+
+/* Primary Button */
+.btn-primary {
+    background-color: #1a73e8;
+}
+.btn-primary:hover {
+    background-color: #1664c4;
+}
+
+/* Success Button */
+.btn-success {
+    background-color: #198754;
+}
+.btn-success:hover {
+    background-color: #167347;
+}
+
+/* Danger Button */
+.btn-danger {
+    background-color: #c62828;
+}
+.btn-danger:hover {
+    background-color: #a91f1f;
+}
+
+/* Secondary Button */
+.btn-secondary {
+    background-color: #444;
+}
+.btn-secondary:hover {
+    background-color: #555;
+}
+
+/* Navbar */
+.navbar-dark {
+    background-color: #111 !important;
+    border-bottom: 1px solid #333;
+}
+
+/* Navbar links */
+.navbar-dark .navbar-nav .nav-link {
+    color: #ccc !important;
+}
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #fff !important;
 }

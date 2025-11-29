@@ -2,21 +2,34 @@
 @model CardManager.Pages.Decks.DetailsModel
 
 @{
+    // Sets the page title displayed in the browser/tab
     ViewData["Title"] = "Deck Details";
 }
 
+<!-- Heading displaying the deck name -->
 <h1>Deck: @Model.Deck.DeckName</h1>
 
+<!-- Summary information about the deck -->
 <p>
+    <!-- Total number of cards in this deck -->
     <strong>Total Cards:</strong> @Model.DeckCards.Count<br />
+
+    <!-- Total estimated value, formatted as currency -->
     <strong>Estimated Value:</strong> @Model.TotalValue.ToString("C")
 </p>
 
+<!-- Action buttons for navigation -->
 <p>
-    <a asp-page="./AddCard" asp-route-id="@Model.Deck.DeckId" class="btn btn-primary">Add Card to Deck</a>
+    <!-- Button to open Add Card page, passing the DeckId as a route parameter -->
+    <a asp-page="./AddCard" asp-route-deckId="@Model.Deck.DeckId" class="btn btn-primary">
+        Add Card to Deck
+    </a>
+
+    <!-- Return to deck list -->
     <a asp-page="./Index" class="btn btn-secondary">Back to Decks</a>
 </p>
 
+<!-- Table displaying all cards inside this deck -->
 <table class="table table-striped">
     <thead>
         <tr>
@@ -25,18 +38,22 @@
             <th>Rarity</th>
             <th>Power</th>
             <th>Value</th>
-            <th></th>
+            <th></th> <!-- Action column -->
         </tr>
     </thead>
     <tbody>
-@foreach (var dc in Model.DeckCards)
+
+@foreach (var dc in Model.DeckCards)  // Loop through each card assigned to this deck
 {
         <tr>
+            <!-- Display basic card details pulled through the DeckCard relationship -->
             <td>@dc.Card.Name</td>
             <td>@dc.Card.CardSet</td>
             <td>@dc.Card.Rarity</td>
             <td>@dc.Card.Power</td>
             <td>@dc.Card.Value</td>
+
+            <!-- Link to remove this specific card from the deck -->
             <td>
                 <a asp-page="./RemoveCard" asp-route-id="@dc.DeckCardId">Remove</a>
             </td>

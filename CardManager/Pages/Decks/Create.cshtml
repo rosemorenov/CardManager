@@ -2,18 +2,32 @@
 @model CardManager.Pages.Decks.CreateModel
 
 @{
+    // Sets the browser tab/page title for user clarity
     ViewData["Title"] = "Create Deck";
 }
 
 <h1>Create Deck</h1>
 
+<!-- 
+    The form posts back to OnPostAsync() in CreateModel.cs.
+    method="post" means data will be sent securely in the request body.
+-->
 <form method="post">
+
     <div class="mb-3">
+        <!-- Label for the DeckName field, generated based on model metadata -->
         <label asp-for="Deck.DeckName"></label>
+
+        <!-- Input field bound to the Deck.DeckName property -->
         <input asp-for="Deck.DeckName" class="form-control" />
+
+        <!-- Displays validation errors for DeckName if model validation fails -->
         <span asp-validation-for="Deck.DeckName" class="text-danger"></span>
     </div>
 
+    <!-- Primary action: create the deck -->
     <button type="submit" class="btn btn-primary">Create</button>
+
+    <!-- Link to navigate back to the deck list page without creating anything -->
     <a asp-page="./Index" class="btn btn-secondary">Back to list</a>
 </form>

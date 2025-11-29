@@ -2,29 +2,42 @@
 @model CardManager.Pages.Decks.IndexModel
 
 @{
+    // Set the page title for display in the browser/tab and layout
     ViewData["Title"] = "Decks";
 }
 
 <h1>Decks</h1>
 
 <p>
+    <!-- Button linking to Create Deck page -->
     <a asp-page="./Create" class="btn btn-success">Create New Deck</a>
 </p>
 
 <table class="table table-striped">
     <thead>
         <tr>
+            <!-- Column headers for deck list -->
             <th>Deck Name</th>
             <th>Number of Cards</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
+
+@* Loop through all decks passed in from the IndexModel *@
 @foreach (var deck in Model.Decks)
 {
         <tr>
+            <!-- Display the deck's name -->
             <td>@deck.DeckName</td>
+
+            <!-- Display the number of cards in the deck
+                 Null-safe: if DeckCards is null, show 0 -->
             <td>@(deck.DeckCards?.Count ?? 0)</td>
+
+            <!-- Action links for each deck:
+                 - Details opens the deck detail page
+                 - Delete allows user to remove a deck -->
             <td>
                 <a asp-page="./Details" asp-route-id="@deck.DeckId">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@deck.DeckId">Delete</a>
