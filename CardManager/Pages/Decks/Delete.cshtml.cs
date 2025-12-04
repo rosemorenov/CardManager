@@ -42,9 +42,8 @@ namespace CardManager.Pages.Decks
             return Page();
         }
 
-        // ------------------------------------------------------
+
         // POST REQUEST — Perform the delete
-        // ------------------------------------------------------
         public async Task<IActionResult> OnPostAsync(int id)
         {
             // Retrieve the deck INCLUDING its related DeckCard entries

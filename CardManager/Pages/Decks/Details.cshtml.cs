@@ -26,14 +26,10 @@ namespace CardManager.Pages.Decks
         // Total monetary value of all cards in the deck
         public decimal TotalValue { get; set; }
 
-        // --------------------------------------------------------
         // GET: Load deck details and all cards linked to the deck
-        // --------------------------------------------------------
         public async Task<IActionResult> OnGetAsync(int id)
         {
-            // Retrieve the deck, including:
-            //   - DeckCards (relationship table)
-            //   - Card (the actual card objects)
+            // Retrieve the deck, including DeckCards (relationship table) and Card (the actual card objects)
             var deck = await _context.Decks
                 .Include(d => d.DeckCards)         // Load DeckCard entries
                     .ThenInclude(dc => dc.Card)    // Load the Card linked to each DeckCard
@@ -49,9 +45,7 @@ namespace CardManager.Pages.Decks
             Deck = deck;
             DeckCards = deck.DeckCards;
 
-            // ------------------------------
-            // Math + Loop: Calculate value
-            // ------------------------------
+            // Calculate the total value of all cards in the deck
             TotalValue = 0m; // Starting value
 
             // Loop through each card in the deck and add its value

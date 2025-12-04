@@ -31,12 +31,7 @@ namespace CardManager.Pages.Decks
         // POST handler: Runs when the user submits the Create Deck form.
         public async Task<IActionResult> OnPostAsync()
         {
-            // -----------------------------
-            // MODEL VALIDATION
-            // -----------------------------
-            // Ensures that:
-            //   - The model is valid
-            //   - DeckName is not null or empty
+            //  Ensures that The model is valid and DeckName is not null or empty
             // Demonstrates Boolean operators + conditional logic.
             if (!ModelState.IsValid || string.IsNullOrWhiteSpace(Deck.DeckName))
             {
@@ -45,9 +40,6 @@ namespace CardManager.Pages.Decks
                 return Page(); // Return to form with error
             }
 
-            // -----------------------------
-            // DATABASE WRITE OPERATION
-            // -----------------------------
             // Adds the new Deck to the EF Core change tracker
             _context.Decks.Add(Deck);
 

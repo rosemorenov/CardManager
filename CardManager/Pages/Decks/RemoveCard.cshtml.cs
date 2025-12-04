@@ -21,10 +21,9 @@ namespace CardManager.Pages.Decks
         [BindProperty]
         public DeckCard DeckCard { get; set; } = default!;
 
-        // --------------------------------------------------------------
+
         // GET: Called when user navigates to /Decks/RemoveCard?id=123
         // Loads DeckCard record, including related Card and Deck objects.
-        // --------------------------------------------------------------
         public async Task<IActionResult> OnGetAsync(int id)
         {
             // Fetch the DeckCard entry with the matching ID.
@@ -45,10 +44,10 @@ namespace CardManager.Pages.Decks
             return Page();
         }
 
-        // --------------------------------------------------------------
+
         // POST: User clicks "Remove" button
         // Removes the selected card from the deck
-        // --------------------------------------------------------------
+
         public async Task<IActionResult> OnPostAsync(int id)
         {
             // Lookup the DeckCard again for safety.

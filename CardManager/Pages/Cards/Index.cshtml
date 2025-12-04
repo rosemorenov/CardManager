@@ -8,11 +8,8 @@
 
 <h1>Cards</h1>
 
-<!-- ============================
-     SEARCH BAR
-     Users can search cards by name, set, or any matching field.
-     Submits a GET request so the URL reflects the search query.
-================================= -->
+<!-- Users can search cards by name, set, or any matching field.
+     Submits a GET request so the URL reflects the search query.-->
 <form method="get" class="mb-3">
     <input type="text"
            name="search"
@@ -26,19 +23,12 @@
     <a asp-page="./Index" class="btn btn-secondary">Clear</a>
 </form>
 
-<!-- ============================
-     ADD NEW CARD BUTTON
-     Navigates to the create page for adding a new card
-================================= -->
+<!-- Navigates to the create page for adding a new card -->
 <p>
     <a asp-page="./Create" class="btn btn-success">Add New Card</a>
 </p>
 
-<!-- ============================
-     CARD LIST TABLE
-     Displays all cards pulled from the database
-     Applies Bootstrap styling for readability
-================================= -->
+<!-- Displays all cards pulled from the database. Applies Bootstrap styling for readability-->
 <table class="table table-striped">
     <thead>
         <tr>
@@ -60,10 +50,7 @@
 
 @foreach (var card in Model.Cards)
 {
-        <!-- ============================
-             CARD ROW
-             Each row displays information for one card
-        ================================= -->
+        <!-- Each row displays information for one card -->
         <tr>
             <td>@card.Name</td>
             <td>@card.CardSet</td>
@@ -83,10 +70,7 @@
                      alt="@card.Name" />
             </td>
 
-            <!-- ============================
-                 ACTION LINKS
-                 Navigate to Details, Edit, and Delete pages
-            ================================= -->
+            <!-- Navigate to Details, Edit, and Delete pages -->
             <td>
                 <p><a asp-page="./Details" asp-route-id="@card.CardId">Details</a></p>
                 <p><a asp-page="./Edit" asp-route-id="@card.CardId">Edit</a></p>

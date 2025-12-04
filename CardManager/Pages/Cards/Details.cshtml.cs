@@ -7,10 +7,8 @@ namespace CardManager.Pages.Cards
 {
     public class DetailsModel : PageModel
     {
-        // -------------------------------
-        // Database context for EF Core
+ 
         // Used to query the Cards table
-        // -------------------------------
         private readonly CardCollectionContext _context;
 
         // Constructor receives the database context through dependency injection
@@ -23,10 +21,8 @@ namespace CardManager.Pages.Cards
         // "default!" tells the compiler we will initialize it before use
         public Card Card { get; set; } = default!;
 
-        // ---------------------------------------------
         // GET: /Cards/Details?id=###
         // Retrieves the card with the given ID from DB
-        // ---------------------------------------------
         public async Task<IActionResult> OnGetAsync(int id)
         {
             // Attempt to find the card by its primary key
